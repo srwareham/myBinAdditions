@@ -1,0 +1,3 @@
+#!/bin/bash
+# Written by Sean Wareham on September 10, 2013
+python ~/bin/scripts/pythonScripts/runApp.py "$@"

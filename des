@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#this command needs to be called as: ". des" for any relevant effect
+cd ~/Desktop/
