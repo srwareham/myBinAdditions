@@ -1,0 +1,3 @@
+#!/bin/bash
+# Command Sourced from: http://osxdaily.com/2011/04/29/show-what-apps-processes-are-use-internet-connection-command-line/
+lsof -P -i -n | cut -f 1 -d " " | uniq
