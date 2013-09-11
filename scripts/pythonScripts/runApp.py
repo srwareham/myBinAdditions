@@ -11,9 +11,21 @@ Created on September 10, 2013
 # Full Path where ".app"s are located
 dir = "/Applications/"
 
+def isApp(fileName):
+	if (fileName[-4:] == ".app"):
+		return True
+	else:
+		return False
+		
+def containsDot(inputString):
+	for c in inputString:
+		if c == ".":
+			return True
+	return False
+
 # Removes  .app from a filename
 def cleanName(inputString):
-	if (inputString[-4:] == ".app"):
+	if (isApp(inputString)):
 		return inputString[:-4]
 # 		These values will never be called (presumably) but need  placeholders
 	else:
@@ -30,41 +42,39 @@ def openCommand(inputStringFilePath):
 
 #Turn application name back into 
 def makeFullPath(applicationName):
-	return dir + applicationName
-	
-def main():
-	apps = os.listdir(dir)	
+	return dir + applicationName	
+
+def run():
+	apps = os.listdir(dir)
 	args = [arg for arg in sys.argv]
-# 	Eliminates the first argument because that is the path to this .py file
 	args = args[1:]
-# 	List of appnames without .app filextensions and in all lowercase
-	cleanApps = []
+	
+	dict ={}
 	
 	for app in apps:
-		cleanApps.append(cleanName(app).lower())
-		
+		if (isApp(app)):
+			dict[cleanName(app).lower()] = os.path.join(dir,app)
+		else:
+		#eliminate junk files
+			if (containsDot(app)):
+				continue
+# 			folder =
+			folderPath = os.path.join(dir,app)
+			folderApps = os.listdir(folderPath)
+			for nestedApp in folderApps:
+				if isApp(nestedApp):
+					dict[cleanName(nestedApp).lower()] = os.path.join( folderPath, nestedApp)
 	for arg in args:
-# 		Probably dont care if working on clone or original, but why not clone just in case
+		arg = arg.strip(" ")
 		cleanArg = arg[:]
-		
-# 		Dont care about case sensitivity, only want to check if user inputs 
-#   	The name of the desired app to launch
 		cleanArg = cleanArg.lower()
-		
-# 		Check if this argument passed into runApp.py exists (case insensitive) in the
-# 		List of .apps in dir
-		if (cleanArg in cleanApps):
-# 			fullpath found by examining original filenames found from os call
-			fullPath = makeFullPath(apps[cleanApps.index(cleanArg)])
-# 			Need the command in all quotes to account for spaces in app names
+		if (cleanArg in dict):
+			fullPath = dict[cleanArg]
 			inQuotes = "\"" + fullPath + "\""
-# 			Generate desired command syntax
 			open = openCommand(inQuotes)
 			print "Running: " + open
 			executeCommand(open)
-# 	for app in cleanApps:
-# 		print app
+
 			
-if __name__ == "__main__":
-	main()
-	
+if (__name__ == "__main__"):
+	run()
