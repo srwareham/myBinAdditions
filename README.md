@@ -19,8 +19,9 @@ Programs from others:
 	
 	
 My Programs:
-	run:  uses bash / python logic to open an application in /Applications/
-		called as: run "google chrome" ; run "Google ChRoMe" ; run firefox 
+	run:  uses bash / python logic to open an application in /Applications/ and
+		its subdirectories.
+		calling method: run "google chrome" ; run "Google ChRoMe" ; run firefox 
 		Is case insensitive by design. Multi-word apps require quotes.
 		
 	des: quickly cd to the desktop.  Must be invoked with ". des" (quotes not necessary)
