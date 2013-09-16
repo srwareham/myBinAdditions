@@ -10,6 +10,12 @@ Created on September 10, 2013
 
 # Full top level path where ".app"s are located
 dir = "/Applications/"
+#first value = name you want to type, second field is the lowercase of the app name
+def addSpecialCases(map):
+	map["google"] = map["google chrome"]
+	map["word"] = map["microsoft word"]
+	map["excel"] = map ["microsoft excel"]
+	map["appstore"] = map ["app store"]
 
 def isApp(fileName):
 	if (fileName[-4:] == ".app"):
@@ -65,6 +71,7 @@ def run():
 			for nestedApp in folderApps:
 				if isApp(nestedApp):
 					dict[cleanName(nestedApp).lower()] = os.path.join( folderPath, nestedApp)
+	addSpecialCases(dict)
 	for arg in args:
 		arg = arg.strip(" ")
 		# Do not remember best practice for .lower() so likely circuitous 
