@@ -6,8 +6,7 @@ import sys
 @author: Sean Wareham
 Created on September 10, 2013
 '''
-
-
+# also want to add support for /Contents/MacOsx/NAME
 # Full top level path where ".app"s are located
 dir = "/Applications/"
 #first value = name you want to type, second field is the lowercase of the app name
@@ -45,6 +44,9 @@ def executeCommand(inputString):
 def makeOpenCommand(inputStringFilePath):
 	command = "open " + inputStringFilePath
 	return command
+
+def makeAppLaunchCommand(properName, appFilePath):
+	command = appFilePath + "
 
 #Turn application name back into 
 def makeFullPath(applicationName):
