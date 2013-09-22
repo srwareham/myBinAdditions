@@ -6,7 +6,9 @@ NOTE: All of these programs are stored in a custom ~/bin directory.  This direct
 has been added to the PATH in my .bash_profile (you may need to add it to .bash_rc if you
 are not running OS X).  Too add a directory to the PATH, edit the file ~/.bash_rc
 to include the line: "PATH=${PATH}:/Users/srwareham/bin"
-
+Additionally, this bin folder is comprised of scripts that will work on any machine with the proper
+prerequisites and also compiled code that will ONLY RUN on my machine.  I simply leave them here as it
+serves as a nice file backup and might also pique interest in these cool projects.
 
 Programs from others:
 	trash: Command line move to trash. Is a useful replacement for "rm" when you might 
@@ -16,6 +18,7 @@ Programs from others:
 	
 	webs: Print out a read-friendly list of what apps are connected to the internet.
 		"COMMANDS" is just a header and is to be ignored.
+	wget: This is the GNU wget project that can be found here: http://ftp.gnu.org/gnu/wget/
 	
 	
 My Programs:
