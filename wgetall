@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 for url in $@
 do
 	wget -e robots=off -r -nH --cut-dirs=2 --no-parent --reject "index.html*" "$url"
