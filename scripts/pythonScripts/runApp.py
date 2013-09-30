@@ -38,6 +38,7 @@ def cleanName(inputString):
 		
 #executes desired command with bash. There probably is a better / safer way
 def executeCommand(inputString):
+	print "Executing: " + inputString
 	commands.getoutput(inputString)
 	
 # Create the Command using MacOSX "open" to open an application
@@ -46,7 +47,7 @@ def makeOpenCommand(inputStringFilePath):
 	return command
 
 def makeAppLaunchCommand(properName, appFilePath):
-	command = appFilePath + "
+	command = appFilePath + "Contents/MacOS/" + properName
 
 #Turn application name back into 
 def makeFullPath(applicationName):
@@ -84,7 +85,8 @@ def run():
 			fullPath = dict[cleanArg]
 			inQuotes = "\"" + fullPath + "\""
 			open = makeOpenCommand(inQuotes)
-			print "Executing: " + open
+			#open = makeAppLaunchCommand(,fullPath)
+			#print "Executing: " + open
 			executeCommand(open)
 		
 if (__name__ == "__main__"):
